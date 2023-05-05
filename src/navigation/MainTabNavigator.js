@@ -25,7 +25,7 @@ export default function MainTabNavigator() {
           options={{
             tabBarLabel: 'Users',
             tabBarIcon: ({color, size}) => (
-              <Icon name="people" color={color} size={size} />
+              <Icon name="account" color={color} size={size} />
             ),
           }}
         />
@@ -35,7 +35,7 @@ export default function MainTabNavigator() {
           options={{
             tabBarLabel: 'Login',
             tabBarIcon: ({color, size}) => (
-              <Icon name="lock-closed" color={color} size={size} />
+              <Icon name="login" color={color} size={size} />
             ),
           }}
         />
