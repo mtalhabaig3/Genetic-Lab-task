@@ -27,7 +27,7 @@ import {
 function App() {
   return (
     <SafeAreaView>
-      <Text>Salam</Text>
+      <Text>Salam!</Text>
     </SafeAreaView>
   );
 }
