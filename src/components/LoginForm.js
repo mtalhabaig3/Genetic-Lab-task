@@ -1,13 +1,15 @@
 import React from 'react';
-import {View, Text, TextInput, Button, StyleSheet} from 'react-native';
+import {View, Text, TextInput, Button, StyleSheet, Alert} from 'react-native';
 import {Formik} from 'formik';
 import validationSchema from '../utils/validations';
-import {TouchableWithoutFeedback} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import {TouchableOpacity} from 'react-native';
 
 const LoginForm = () => {
   const handleSubmit = values => {
-    console.log(`Email: ${values.email}\nPassword: ${values.password}`);
+    const {email, password} = values;
+    Alert.alert('Form Submission', `Email: ${email}\nPassword: ${password}`, [
+      {text: 'OK'},
+    ]);
   };
 
   return (
