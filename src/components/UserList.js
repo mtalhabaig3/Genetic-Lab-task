@@ -49,7 +49,8 @@ const UserList = () => {
         onPress={() => saveSelectedUser(item)}
         style={{
           backgroundColor:
-            selectedUser && selectedUser.id === item.id ? 'lightblue' : 'white',
+            selectedUser && selectedUser.id === item.id ? 'lightgreen' : null,
+          borderRadius: 10,
         }}>
         <Card
           key={item.id}
@@ -91,7 +92,7 @@ const UserList = () => {
   };
 
   return (
-    <View style={{flex: 1, backgroundColor: 'white'}}>
+    <View style={{flex: 1}}>
       <FlatList
         data={users}
         renderItem={renderItem}
@@ -108,9 +109,11 @@ export default UserList;
 const styles = StyleSheet.create({
   grey: {
     color: 'gray',
+    flexShrink: 1,
   },
   bold: {
     fontWeight: 'bold',
+    width: '30%',
   },
   size: {
     fontSize: 17,
@@ -124,9 +127,12 @@ const styles = StyleSheet.create({
   },
   card: {
     borderRadius: 10,
+    borderWidth: 2,
+    borderColor: 'black',
     padding: 20,
     marginHorizontal: 20,
-    marginBottom: 10,
+    marginBottom: 15,
+    overflow: 'hidden',
   },
   cardContent: {
     flexDirection: 'row',

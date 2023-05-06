@@ -1,7 +1,9 @@
 import React from 'react';
-import {View, Text, TextInput, Button} from 'react-native';
+import {View, Text, TextInput, Button, StyleSheet} from 'react-native';
 import {Formik} from 'formik';
 import validationSchema from '../utils/validations';
+import {TouchableWithoutFeedback} from 'react-native';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const LoginForm = () => {
   const handleSubmit = values => {
@@ -9,7 +11,13 @@ const LoginForm = () => {
   };
 
   return (
-    <View style={{padding: 10}}>
+    <View
+      style={{
+        padding: 10,
+        flexDirection: 'column',
+        // justifyContent: 'center',
+        // alignItems: 'center',
+      }}>
       <Formik
         initialValues={{email: '', password: ''}}
         validationSchema={validationSchema}
@@ -23,41 +31,46 @@ const LoginForm = () => {
           touched,
         }) => (
           <View>
-            <Text style={{marginBottom: 5}}>Email</Text>
+            <Text style={{marginBottom: 5, fontSize: 16}}>Email</Text>
             <TextInput
               onChangeText={handleChange('email')}
               onBlur={handleBlur('email')}
               value={values.email}
               placeholder="Email"
-              style={{
-                borderWidth: 1,
-                borderColor: errors.email && touched.email ? 'red' : 'gray',
-                padding: 5,
-              }}
+              style={[
+                styles.textInput,
+                {
+                  borderColor: errors.email && touched.email ? 'red' : 'gray',
+                },
+              ]}
             />
             {errors.email && touched.email && (
               <Text style={{color: 'red', marginTop: 5}}>{errors.email}</Text>
             )}
-            <Text style={{marginTop: 10, marginBottom: 5}}>Password</Text>
+            <Text style={{marginTop: 10, marginBottom: 5, fontSize: 16}}>
+              Password
+            </Text>
             <TextInput
               onChangeText={handleChange('password')}
               onBlur={handleBlur('password')}
               value={values.password}
               placeholder="Password"
               secureTextEntry
-              style={{
-                borderWidth: 1,
-                borderColor:
-                  errors.password && touched.password ? 'red' : 'gray',
-                padding: 5,
-              }}
+              style={[
+                styles.textInput,
+                {
+                  borderColor: errors.email && touched.email ? 'red' : 'gray',
+                },
+              ]}
             />
             {errors.password && touched.password && (
               <Text style={{color: 'red', marginTop: 5}}>
                 {errors.password}
               </Text>
             )}
-            <Button title="Submit" onPress={handleSubmit} />
+            <TouchableOpacity style={styles.button}>
+              <Button title="Submit" onPress={handleSubmit} color={'black'} />
+            </TouchableOpacity>
           </View>
         )}
       </Formik>
@@ -66,3 +79,18 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
+
+const styles = StyleSheet.create({
+  textInput: {
+    borderWidth: 1,
+    padding: 10,
+    borderRadius: 10,
+  },
+  button: {
+    width: 400,
+    backgroundColor: 'lightgreen',
+    alignSelf: 'center',
+    marginTop: 50,
+    borderRadius: 10,
+  },
+});
